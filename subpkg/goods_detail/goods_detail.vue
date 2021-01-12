@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<div class="box">我的</div>
+		详情页面
 	</view>
 </template>
 
@@ -9,14 +9,11 @@
 		data() {
 			return {
 				
-			}
-		},
-		methods: {
-			
+			};
 		}
 	}
 </script>
 
-<style>
+<style lang="scss">
 
 </style>
