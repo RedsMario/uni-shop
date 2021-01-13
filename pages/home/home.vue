@@ -122,6 +122,7 @@ export default {
 		}
 	}
 	.floor-list {
+		padding: 10rpx;
 		.floor-title {
 			height: 60rpx;
 			width: 100%;
