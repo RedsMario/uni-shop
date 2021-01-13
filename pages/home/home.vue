@@ -1,5 +1,6 @@
 <template>
 	<view class="home-container">
+		<my-search @click="goToSearch"></my-search>
 		<!-- 轮播图部分 -->
 		<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" circular>
 			<swiper-item v-for="(item, index) in swiperList" :key="index">
@@ -84,7 +85,6 @@ export default {
 				})
 			})
 			this.floorList = res.message
-			console.log(res);
 		},
 		// 导航跳转
 		handleNavJump(item){
@@ -93,6 +93,12 @@ export default {
 					url: '/pages/cate/cate'
 				})
 			}
+		},
+		// 进入搜索页面
+		goToSearch(){
+			uni.navigateTo({
+				url: '/subpkg/search/search'
+			})
 		}
 	}
 };
