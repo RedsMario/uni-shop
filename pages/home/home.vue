@@ -61,7 +61,7 @@ export default {
 		async getSwiperList() {
 			const { data: res } = await getSwiper();
 			if (res.meta.status !== 200) {
-				uni.$showMsg('轮播图数据请求失败');
+				return uni.$showMsg('轮播图数据请求失败');
 			}
 			this.swiperList = res.message;
 		},
@@ -69,7 +69,7 @@ export default {
 		async getCateList() {
 			const { data: res } = await getGoodsCate();
 			if (res.meta.status !== 200) {
-				uni.$showMsg('分类列表请求失败');
+				return uni.$showMsg('分类列表请求失败');
 			}
 			this.cateList = res.message;
 		},
@@ -77,7 +77,7 @@ export default {
 		async getFloorList(){
 			const {data: res} = await getFloorList()
 			if (res.meta.status !== 200) {
-				uni.$showMsg('楼层列表请求失败');
+				return uni.$showMsg('楼层列表请求失败');
 			}
 			res.message.forEach(item => {
 				item.product_list.forEach(subItem => {

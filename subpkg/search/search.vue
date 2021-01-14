@@ -10,7 +10,7 @@
 			</view>
 			<!-- 列表区域 -->
 			<view class="history-list">
-				<uni-tag :text="item" v-for="(item, index) in historyList" :key="index"></uni-tag>
+				<uni-tag :text="item" v-for="(item, index) in historyList" :key="index" @click="goGoodList(item)"></uni-tag>
 			</view>
 		</view>
 		<!-- 搜索结果列表 -->
@@ -96,6 +96,12 @@ export default {
 			uni.navigateTo({
 				url: '/subpkg/goods_detail/goods_detail?goods_id=' + item.goods_id
 			});
+		},
+		// 进入商品列表页面
+		goGoodList(item){
+			uni.navigateTo({
+				url: '/subpkg/goods_list/goods_list?query=' + item
+			})
 		}
 	},
 	watch: {

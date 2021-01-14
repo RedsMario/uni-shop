@@ -79,9 +79,8 @@
 			},
 			// 进入商品列表页面
 			goGoodList(item){
-				console.log(item);
 				uni.navigateTo({
-					url: '/subpkg/goods_list/goods_list?cid=' + item.cate_id
+					url: '/subpkg/goods_list/goods_list?cid=' + item.cat_id
 				})
 			}
 		}
