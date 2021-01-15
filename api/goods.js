@@ -28,3 +28,12 @@ export const getGoodsList = (params) => {
 		params
 	})
 }
+
+// 获取商品详情
+export const getGoodsDetail = (params) => {
+	return instance.request({
+		method: 'GET',
+		url: '/api/public/v1/goods/detail',
+		params
+	})
+}

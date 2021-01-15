@@ -1,7 +1,7 @@
 <template>
 	<view class="goods-item">
 		<!-- 商品图片 -->
-		<view class="goods-img"><image :src="item.goods_big_logo || defaultPic"></image></view>
+		<view class="goods-img"><image class="img" :src="item.goods_big_logo || defaultPic"></image></view>
 		<!-- 商品标题 -->
 		<view class="goods-description">
 			<view class="goods-title">{{ item.goods_name }}</view>
@@ -38,7 +38,7 @@
 		box-sizing: border-box;
 		padding: 10rpx;
 		border-bottom: 1px solid #efefef;
-		image {
+		.img {
 			display: block;
 			width: 100px;
 			height: 100px;
