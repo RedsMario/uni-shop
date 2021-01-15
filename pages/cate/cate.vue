@@ -33,7 +33,9 @@
 
 <script>
 	import {getCateList} from '../../api/cate.js'
+	import badge from '@/mixins/tab_badge'
 	export default {
+		mixins: [badge],
 		data() {
 			return {
 				// 滚动条高度

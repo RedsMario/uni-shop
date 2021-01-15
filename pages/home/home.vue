@@ -17,18 +17,26 @@
 		</view>
 		<!-- 楼层部分 -->
 		<view class="floor-list">
-			<view class="floor-item" v-for="(item,index) in floorList" :key="index">
+			<view class="floor-item" v-for="(item, index) in floorList" :key="index">
 				<!-- 标题部分 -->
-				<view class="top">
-					<image :src="item.floor_title.image_src" class="floor-title"></image>
-				</view>
+				<view class="top"><image :src="item.floor_title.image_src" class="floor-title"></image></view>
 				<view class="bottom">
 					<navigator class="left-box" :url="item.product_list[0].url">
-						<image :src="item.product_list[0].image_src" mode="widthFix" :style="{width: item.product_list[0].image_width + 'rpx'}"></image>
+						<image
+							:src="item.product_list[0].image_src"
+							mode="widthFix"
+							:style="{ width: item.product_list[0].image_width + 'rpx' }"
+						></image>
 					</navigator>
 					<view class="right-box">
-						<navigator class="right-item" v-for="(subItem, index) in item.product_list" :key="index" v-if="index !== 0" :url="subItem.url">
-							<image :src="subItem.image_src" :style="{width: subItem.image_width + 'rpx'}" mode="widthFix"></image>
+						<navigator
+							class="right-item"
+							v-for="(subItem, index) in item.product_list"
+							:key="index"
+							v-if="index !== 0"
+							:url="subItem.url"
+						>
+							<image :src="subItem.image_src" :style="{ width: subItem.image_width + 'rpx' }" mode="widthFix"></image>
 						</navigator>
 					</view>
 				</view>
@@ -40,7 +48,9 @@
 <script>
 import { getSwiper } from '../../api/home.js';
 import { getGoodsCate, getFloorList } from '../../api/goods.js';
+import badge from '@/mixins/tab_badge';
 export default {
+	mixins: [badge],
 	data() {
 		return {
 			// 轮播图列表
@@ -54,7 +64,7 @@ export default {
 	onLoad() {
 		this.getSwiperList();
 		this.getCateList();
-		this.getFloorList()
+		this.getFloorList();
 	},
 	methods: {
 		// 获取轮播图列表
@@ -74,31 +84,31 @@ export default {
 			this.cateList = res.message;
 		},
 		// 获取楼层列表
-		async getFloorList(){
-			const {data: res} = await getFloorList()
+		async getFloorList() {
+			const { data: res } = await getFloorList();
 			if (res.meta.status !== 200) {
 				return uni.$showMsg('楼层列表请求失败');
 			}
 			res.message.forEach(item => {
 				item.product_list.forEach(subItem => {
-					subItem.url = '/subpkg/goods_list/goods_list?' + subItem.navigator_url.split('?')[1]
-				})
-			})
-			this.floorList = res.message
+					subItem.url = '/subpkg/goods_list/goods_list?' + subItem.navigator_url.split('?')[1];
+				});
+			});
+			this.floorList = res.message;
 		},
 		// 导航跳转
-		handleNavJump(item){
-			if(item.name === '分类'){
+		handleNavJump(item) {
+			if (item.name === '分类') {
 				uni.switchTab({
 					url: '/pages/cate/cate'
-				})
+				});
 			}
 		},
 		// 进入搜索页面
-		goToSearch(){
+		goToSearch() {
 			uni.navigateTo({
 				url: '/subpkg/search/search'
-			})
+			});
 		}
 	}
 };
@@ -143,6 +153,5 @@ export default {
 			justify-content: space-around;
 		}
 	}
-
 }
 </style>

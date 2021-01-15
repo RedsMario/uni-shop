@@ -5,7 +5,9 @@
 </template>
 
 <script>
+	import badge from '@/mixins/tab_badge'
 	export default {
+		mixins: [badge],
 		data() {
 			return {
 				
