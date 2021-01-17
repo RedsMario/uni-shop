@@ -5,7 +5,12 @@ export default {
 		...mapGetters('m_cart', ['total'])
 	},
 	onShow(){
-		this.setBadge()
+		this.total && this.setBadge()
+	},
+	watch: {
+		total: function(){
+			this.total && this.setBadge()
+		}
 	},
 	methods: {
 		setBadge(){
