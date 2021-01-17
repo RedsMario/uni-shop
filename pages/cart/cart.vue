@@ -25,6 +25,7 @@
 								:show-count="true"
 								@click="onClick"
 								@change-count="onChangeCount"
+								:style="{width: '100%;'}"
 							></my-goods>
 						</uni-swipe-action-item>
 					</view>

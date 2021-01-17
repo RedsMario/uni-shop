@@ -78,6 +78,7 @@
 			}
 		}
 		.goods-description {
+			flex: 1;
 			display: flex;
 			margin-left: 15rpx;
 			flex-direction: column;
