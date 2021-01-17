@@ -11,16 +11,17 @@
 			合计: <text class="price">￥{{totalPrice}}</text>
 		</view>
 		<!-- 结算部分 -->
-		<view class="btn-settle">
-			<text>结算({{checkCount}})</text>
+		<view class="btn-settle" @click="onClickSettle">
+			<text >结算({{checkCount}})</text>
 		</view>
 	</view>
 </template>
 
 <script>
-	import {mapGetters, mapMutations} from 'vuex'
+	import {mapState, mapGetters, mapMutations} from 'vuex'
 	export default {
 		computed: {
+			...mapState('m_user', ['address','token']),
 			...mapGetters('m_cart', ['checkCount','total','totalPrice']),
 			checkState: function(){
 				return this.checkCount === this.total
@@ -35,6 +36,15 @@
 			// 更新全选或反选
 			cancelSelect(){
 				this.updateAllState(!this.checkState)
+			},
+			// 点击了结算
+			onClickSettle(){
+				// 判断是否勾选了商品
+				if(!this.checkCount) return uni.$showMsg('请先勾选商品') 
+				// 判断是否选择了收货地址
+				if(!Object.keys(this.address).length) return uni.$showMsg('请先选择收货地址')
+				// 判断用户是否登录
+				if(!this.token) return uni.$showMsg('请先登录')
 			}
 		}
 	}

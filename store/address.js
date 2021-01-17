@@ -2,7 +2,8 @@ import { getItem, setItem } from '../utils/storage.js'
 export default {
 	namespaced: true,
 	state: () => ({
-		address: getItem('address') || {}
+		address: getItem('address') || {},
+		token: ''
 	}),
 	mutations: {
 		updateAddress(state, address){
